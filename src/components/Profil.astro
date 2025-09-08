@@ -1,13 +1,23 @@
 ---
 import '../styles/main.css';
+import OmMeg from './OmMeg.astro';
 ---
 
 <div>
+	<svg
+		width="200"
+		height="200"
+		viewBox="0 0 200 200"
+		fill="currentColor"
+		class="profile-square"
+	>
+		<rect x="0" y="0" width="200" height="200" fill="currentColor"></rect>
+	</svg>
 	<h1>Sandra Elise Eng</h1>
 	<p>Lærling i IT-utvikling</p>
 
 	<p>🌎 Oslo, Norge</p>
-	<div>
+	<div class="social-icons">
 		<svg
 			width="24"
 			height="24"
@@ -42,4 +52,13 @@ import '../styles/main.css';
 			></path>
 		</svg>
 	</div>
+	<OmMeg />
 </div>
+
+<style>
+	.social-icons {
+		display: flex;
+		justify-content: left;
+		gap: 0.75rem;
+	}
+</style>

@@ -1,13 +1,71 @@
 ---
 import Profil from '../components/Profil.astro';
 import Layout from '../layouts/Layout.astro';
-import OmMeg from '../components/OmMeg.astro';
+import Erfaring from '../components/Erfaring.astro';
+import Utdanning from '../components/Utdanning.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Profil />
-	<OmMeg />
+	<div class="container">
+		<aside class="sidebar">
+			<Profil />
+		</aside>
+		<main class="content">
+			<Erfaring />
+			<Utdanning />
+		</main>
+	</div>
 </Layout>
+
+<style>
+	.container {
+		display: flex;
+		height: 100vh;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		position: relative;
+	}
+
+	.sidebar {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 350px;
+		height: 100vh;
+		overflow-y: auto;
+		padding: 2rem;
+		box-sizing: border-box;
+	}
+
+	.content {
+		margin-left: 350px;
+		flex: 1;
+		overflow-y: auto;
+		padding: 2rem;
+		box-sizing: border-box;
+		height: 100vh;
+	}
+
+	/* Responsive design for smaller screens */
+	@media (max-width: 768px) {
+		.container {
+			flex-direction: column;
+		}
+
+		.sidebar {
+			position: relative;
+			width: 100%;
+			height: auto;
+			min-height: auto;
+		}
+
+		.content {
+			margin-left: 0;
+			height: auto;
+		}
+	}
+</style>
