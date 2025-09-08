@@ -22,49 +22,75 @@ import Utdanning from '../components/Utdanning.astro';
 
 <style>
 	.container {
-		display: flex;
-		height: 100vh;
-		max-width: 100%;
+		display: grid;
+		grid-template-columns: 350px 1fr;
+		grid-template-areas: 'sidebar content';
+		max-width: 1200px;
 		margin: 0 auto;
-		position: relative;
+		min-height: 100vh;
+		gap: 3rem;
+		padding-top: 3rem;
 	}
 
 	.sidebar {
-		position: absolute;
-		left: 0;
+		grid-area: sidebar;
+		box-sizing: border-box;
+		height: 100vh;
+		position: fixed;
 		top: 0;
 		width: 350px;
-		height: 100vh;
+		padding: 3rem 2rem;
 		overflow-y: auto;
-		padding: 2rem;
-		box-sizing: border-box;
 	}
 
 	.content {
-		margin-left: 350px;
-		flex: 1;
-		overflow-y: auto;
-		padding: 2rem;
+		grid-area: content;
 		box-sizing: border-box;
-		height: 100vh;
+		padding: 2rem;
+	}
+
+	.content > * {
+		margin-bottom: 4rem;
+	}
+
+	.content > *:last-child {
+		margin-bottom: 0;
 	}
 
 	/* Responsive design for smaller screens */
 	@media (max-width: 768px) {
 		.container {
-			flex-direction: column;
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'sidebar'
+				'content';
+			padding-top: 1rem;
 		}
 
 		.sidebar {
-			position: relative;
-			width: 100%;
+			position: static;
 			height: auto;
-			min-height: auto;
+			width: 100%;
+			padding: 2rem;
+			padding-right: 0;
 		}
 
 		.content {
-			margin-left: 0;
-			height: auto;
+			padding: 1rem 2rem 1rem 0;
+		}
+	}
+
+	/* Ensure proper positioning for larger screens */
+	@media (min-width: 769px) {
+		.sidebar {
+			left: max(2rem, calc(50% - 600px));
+		}
+	}
+
+	/* Adjust for medium screens to prevent sidebar from going off-screen */
+	@media (min-width: 769px) and (max-width: 1240px) {
+		.sidebar {
+			left: 2rem;
 		}
 	}
 </style>
