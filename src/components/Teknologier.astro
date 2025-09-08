@@ -1,6 +1,6 @@
 ---
 import '../styles/main.css';
-import { jobber } from './Erfaring.astro';
+import { jobber } from '../data/erfaring';
 
 const alleTeknologier = jobber.flatMap((jobb) => jobb.teknologier);
 const unikeTeknologier = [...new Set(alleTeknologier)].sort();

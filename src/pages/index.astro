@@ -1,10 +1,14 @@
 ---
 import Sidebar from '../components/Sidebar.astro';
 import Layout from '../layouts/Layout.astro';
-import Erfaring from '../components/Erfaring.astro';
+import ErfaringComponent from '../components/Erfaring.tsx';
+import { jobber } from '../data/erfaring';
 import Utdanning from '../components/Utdanning.astro';
 import Teknologier from '../components/Teknologier.astro';
 import Prosjekter from '../components/Prosjekter.astro';
+
+// Konfigurer hvor mange jobber som skal vises initialt
+const ANTALL_SYNLIGE_JOBBER = 2;
 ---
 
 <Layout>
@@ -13,7 +17,11 @@ import Prosjekter from '../components/Prosjekter.astro';
 			<Sidebar />
 		</aside>
 		<main class="content">
-			<Erfaring />
+			<ErfaringComponent 
+				client:load 
+				jobber={jobber} 
+				antallSynlige={ANTALL_SYNLIGE_JOBBER} 
+			/>
 			<Prosjekter />
 			<Utdanning />
 			<Teknologier />
