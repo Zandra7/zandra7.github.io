@@ -57,9 +57,9 @@ export const jobber = [
 								<li>{punkt}</li>
 							))}
 						</ul>
-						<ul class="tags">
+						<ul class="teknologier">
 							{jobb.teknologier.map((tech) => (
-								<li class="tag"># {tech}</li>
+								<li class="teknologi"># {tech}</li>
 							))}
 						</ul>
 					</div>
@@ -116,21 +116,6 @@ export const jobber = [
 
 	.bedrift {
 		margin-top: 0.25rem;
-	}
-
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		list-style: none;
-	}
-
-	.tag {
-		background-color: #de6262;
-		color: white;
-		border-radius: 5px;
-		padding: 0.25rem 0.75rem;
-		font-size: 12px;
 	}
 
 	@media (max-width: 1100px) {

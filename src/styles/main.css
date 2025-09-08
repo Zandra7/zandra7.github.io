@@ -5,3 +5,19 @@
 .subtle {
 	color: #ababab;
 }
+
+.teknologier {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0;
+}
+
+.teknologi {
+	background-color: #de6262;
+	color: white;
+	border-radius: 5px;
+	padding: 0.25rem 0.75rem;
+	font-size: 12px;
+}
