@@ -49,14 +49,9 @@ import Teknologier from '../components/Teknologier.astro';
 		grid-area: content;
 		box-sizing: border-box;
 		padding: 2rem;
-	}
-
-	.content > * {
-		margin-bottom: 4rem;
-	}
-
-	.content > *:last-child {
-		margin-bottom: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 5rem;
 	}
 
 	@media (max-width: 900px) {
