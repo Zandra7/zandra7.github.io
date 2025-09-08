@@ -13,8 +13,8 @@ import OmMeg from './OmMeg.astro';
 	>
 		<rect x="0" y="0" width="200" height="200" fill="currentColor"></rect>
 	</svg>
-	<h1>Sandra Elise Eng</h1>
-	<p>Lærling i IT-utvikling</p>
+	<h1 class="name">Sandra Elise Eng</h1>
+	<p class="subtle title">Lærling i IT-utvikling</p>
 
 	<p>🌎 Oslo, Norge</p>
 	<div class="social-icons">
@@ -56,6 +56,15 @@ import OmMeg from './OmMeg.astro';
 </div>
 
 <style>
+	h1 {
+		margin-bottom: 0;
+	}
+
+	.title {
+		margin-top: 0.25rem;
+		margin-bottom: 1.5rem;
+	}
+
 	.social-icons {
 		display: flex;
 		justify-content: left;
