@@ -57,37 +57,34 @@ import Utdanning from '../components/Utdanning.astro';
 		margin-bottom: 0;
 	}
 
-	/* Responsive design for smaller screens */
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		.container {
 			grid-template-columns: 1fr;
 			grid-template-areas:
 				'sidebar'
 				'content';
 			padding-top: 1rem;
+			gap: 1rem;
 		}
 
 		.sidebar {
 			position: static;
 			height: auto;
 			width: 100%;
-			padding: 2rem;
-			padding-right: 0;
+			padding: 1rem 3rem;
 		}
 
 		.content {
-			padding: 1rem 2rem 1rem 0;
+			padding: 1rem 3rem;
 		}
 	}
 
-	/* Ensure proper positioning for larger screens */
 	@media (min-width: 769px) {
 		.sidebar {
 			left: max(2rem, calc(50% - 600px));
 		}
 	}
 
-	/* Adjust for medium screens to prevent sidebar from going off-screen */
 	@media (min-width: 769px) and (max-width: 1240px) {
 		.sidebar {
 			left: 2rem;
