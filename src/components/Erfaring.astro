@@ -1,7 +1,129 @@
-<div>
+---
+const jobber = [
+	{
+		periode: 'aug. 2024 - Nå',
+		tittel: 'Lærling i IT-utvikling',
+		bedrift: 'Nav IT, Oslo',
+		beskrivelse: [
+			'Utvikler og vedlikeholder applikasjoner brukt av Nav',
+			'Jobber med moderne React-løsninger og TypeScript',
+			'Deltar i teamarbeid og agile utviklingsmetoder',
+		],
+		teknologier: ['Typescript', 'React', 'Node.js', 'Git'],
+	},
+	{
+		periode: 'aug. 2023 - feb. 2024',
+		tittel: 'Praktikant IT-utvikling',
+		bedrift: 'Glasspaper Solutions',
+		beskrivelse: [
+			'Jobbet med frontend og design én dag i uka hos glasspaper solutions',
+			'Arbeidet med en intern applikasjon for å bli kjent med ulike verktøy',
+		],
+		teknologier: ['Vue', 'Tailwind', 'Figma', 'JavaScript'],
+	},
+	{
+		periode: 'sep. 2020 - mar. 2021',
+		tittel: 'Kodeinstruktør',
+		bedrift: 'Oslo kommune',
+		beskrivelse: [
+			'Var kodeinstruktør for elever på 4. trinn i Scratch',
+			'Forklarte hva de skulle gjøre på tavla og hjalp til med det de trengte hjelp med',
+		],
+		teknologier: ['Scratch'],
+	},
+];
+---
+
+<div class="erfaring-container">
 	<h2>Erfaring</h2>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua.
-	</p>
+	<div class="timeline">
+		{
+			jobber.map((jobb, index) => (
+				<div class="job">
+					<div class="timeline-left">
+						<p class="periode">{jobb.periode}</p>
+					</div>
+					<div class="timeline-center">
+						<div class="timeline-dot" />
+						<div class="timeline-line-bottom" />
+					</div>
+					<div class="timeline-right">
+						<h3>{jobb.tittel}</h3>
+						<p class="bedrift subtle">{jobb.bedrift}</p>
+						<h4>Oppsummering:</h4>
+						<ul>
+							{jobb.beskrivelse.map((punkt) => (
+								<li>{punkt}</li>
+							))}
+						</ul>
+						<div class="tags">
+							{jobb.teknologier.map((tech) => (
+								<span class="tag"># {tech}</span>
+							))}
+						</div>
+					</div>
+				</div>
+			))
+		}
+	</div>
 </div>
+
+<style>
+	.job {
+		display: grid;
+		grid-template-columns: 150px 30px 1fr;
+		gap: 1rem;
+		margin-bottom: 3rem;
+	}
+
+	.periode {
+		text-align: right;
+		margin: 0;
+	}
+
+	.timeline-center {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+	}
+
+	.timeline-dot {
+		width: 8px;
+		height: 8px;
+		background-color: #de6262;
+		border-radius: 50%;
+		margin: 0.5rem 0 0.5rem 0;
+	}
+
+	.timeline-line-bottom {
+		width: 2px;
+		background-color: #de6262;
+		flex-grow: 1;
+		margin-top: 0.5rem;
+		margin-bottom: -2.5rem;
+	}
+
+	h3,
+	h4 {
+		margin: 0;
+	}
+
+	.bedrift {
+		margin-top: 0.25rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.tag {
+		background-color: #de6262;
+		color: white;
+		border-radius: 5px;
+		padding: 0.25rem 0.75rem;
+		margin-right: 0.5rem;
+		font-size: 12px;
+	}
+</style>
