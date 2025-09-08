@@ -123,13 +123,13 @@ export const jobber = [
 		padding-left: 0;
 	}
 
-	ul li {
+	ul:not(.teknologier) li {
 		position: relative;
 		padding-left: 1rem;
 		margin-bottom: 0.25rem;
 	}
 
-	ul li::before {
+	ul:not(.teknologier) li::before {
 		content: '•';
 		position: absolute;
 		left: 0;

@@ -1,0 +1,91 @@
+---
+const prosjekter = [
+	{
+		navn: 'Prosjekt 1',
+		beskrivelse: 'Beskrivelse av prosjekt 1.',
+		teknologier: ['React', 'Node.js', 'MongoDB'],
+	},
+	{
+		navn: 'Prosjekt 2',
+		beskrivelse: 'Beskrivelse av prosjekt 2.',
+		teknologier: ['Vue.js', 'Express', 'PostgreSQL'],
+	},
+	{
+		navn: 'Prosjekt 3',
+		beskrivelse: 'Beskrivelse av prosjekt 3.',
+		teknologier: ['Astro', 'TypeScript', 'CSS'],
+	},
+];
+---
+
+<div class="prosjekter-container">
+	<h2>Prosjekter</h2>
+	<div class="prosjekter-list">
+		{
+			prosjekter.map((prosjekt) => (
+				<div class="prosjekt-item">
+					<h3>{prosjekt.navn}</h3>
+					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
+					<ul class="teknologier">
+						{prosjekt.teknologier.map((teknologi) => (
+							<li class="teknologi"># {teknologi}</li>
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.prosjekter-container {
+		margin-bottom: 2rem;
+	}
+
+	.prosjekter-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+	}
+
+	.prosjekt-item {
+		background-color: rgba(222, 98, 98, 0.05);
+		border-radius: 10px;
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		flex: 1;
+		min-width: 300px;
+		max-width: 450px;
+	}
+
+	h2 {
+		margin-bottom: 2rem;
+	}
+
+	h3 {
+		margin: 0;
+		color: #de6262;
+	}
+
+	.beskrivelse {
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	.teknologier {
+		margin: 0;
+		list-style: none;
+		padding-left: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.prosjekt-item {
+			min-width: 100%;
+		}
+	}
+</style>
