@@ -1,5 +1,5 @@
 ---
-const jobber = [
+export const jobber = [
 	{
 		periode: 'aug. 2024 - Nå',
 		tittel: 'Lærling i IT-utvikling',
@@ -9,7 +9,7 @@ const jobber = [
 			'Jobber med moderne React-løsninger og TypeScript',
 			'Deltar i teamarbeid og agile utviklingsmetoder',
 		],
-		teknologier: ['Typescript', 'React', 'Node.js', 'Git'],
+		teknologier: ['Typescript', 'React', 'Node.js', 'Git', 'Figma'],
 	},
 	{
 		periode: 'aug. 2023 - feb. 2024',
@@ -57,11 +57,11 @@ const jobber = [
 								<li>{punkt}</li>
 							))}
 						</ul>
-						<div class="tags">
+						<ul class="tags">
 							{jobb.teknologier.map((tech) => (
-								<span class="tag"># {tech}</span>
+								<li class="tag"># {tech}</li>
 							))}
-						</div>
+						</ul>
 					</div>
 				</div>
 			))
@@ -122,6 +122,7 @@ const jobber = [
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
+		list-style: none;
 	}
 
 	.tag {

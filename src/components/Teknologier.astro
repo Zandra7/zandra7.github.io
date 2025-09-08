@@ -1,0 +1,35 @@
+---
+import { jobber } from './Erfaring.astro';
+
+const alleTeknologier = jobber.flatMap((jobb) => jobb.teknologier);
+const unikeTeknologier = [...new Set(alleTeknologier)].sort();
+---
+
+<div>
+	<h2>Teknologier</h2>
+	<ul class="teknologier">
+		{
+			unikeTeknologier.map((teknologi) => (
+				<li class="teknologi"># {teknologi}</li>
+			))
+		}
+	</ul>
+</div>
+
+<style>
+	.teknologier {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		list-style: none;
+		padding: 0;
+	}
+
+	.teknologi {
+		background-color: #de6262;
+		color: white;
+		border-radius: 5px;
+		padding: 0.25rem 0.75rem;
+		font-size: 12px;
+	}
+</style>
