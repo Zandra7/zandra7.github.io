@@ -1,0 +1,133 @@
+/* Utdanning.css */
+.utdanning-container .utdanning-item {
+	display: grid;
+	grid-template-columns: 150px 30px 1fr;
+	gap: 1rem;
+	margin-bottom: 3rem;
+}
+
+.utdanning-container .periode {
+	text-align: right;
+	margin: 0;
+}
+
+.utdanning-container .timeline-right {
+	background-color: rgba(222, 98, 98, 0.05);
+	border-radius: 10px;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.utdanning-container .timeline-right .periode {
+	display: none;
+}
+
+.utdanning-container .timeline-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.utdanning-container .timeline-dot {
+	width: 8px;
+	height: 8px;
+	background-color: #de6262;
+	border-radius: 50%;
+	margin: 0.5rem 0 0.5rem 0;
+}
+
+.utdanning-container .timeline-line-bottom {
+	width: 2px;
+	background-color: #de6262;
+	flex-grow: 1;
+	margin-top: 0.5rem;
+	margin-bottom: -2.5rem;
+}
+
+.utdanning-container h2 {
+	margin-bottom: 2rem;
+}
+
+.utdanning-container h3 {
+	margin: 0;
+}
+
+.utdanning-container .program {
+	margin: 0;
+}
+
+.utdanning-container .detaljer {
+	margin: 0;
+	list-style: none;
+	padding-left: 0;
+}
+
+.utdanning-container .detaljer li {
+	margin-bottom: 0.25rem;
+	position: relative;
+	padding-left: 1rem;
+}
+
+.utdanning-container .detaljer li::before {
+	content: '•';
+	position: absolute;
+	left: 0;
+	color: #de6262;
+}
+
+.utdanning-container .vis-mer-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.utdanning-container .vis-mer-knapp {
+	background: linear-gradient(135deg, #de6262, #c55555);
+	color: white;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.utdanning-container .vis-mer-knapp:hover {
+	background: linear-gradient(135deg, #c55555, #b04848);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.utdanning-container .vis-mer-knapp:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1100px) {
+	.utdanning-container .utdanning-item {
+		grid-template-columns: 30px 1fr;
+		gap: 1rem;
+	}
+
+	.utdanning-container .timeline-left {
+		display: none;
+	}
+
+	.utdanning-container .timeline-right {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.utdanning-container .timeline-right .periode {
+		display: block;
+		order: -1;
+		text-align: left;
+		margin-bottom: 0.5rem;
+		color: #de6262;
+	}
+}
