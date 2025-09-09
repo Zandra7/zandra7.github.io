@@ -1,14 +1,15 @@
 .vis-mer-container {
 	margin-top: 1rem;
 }
+
 @media (min-width: 1101px) {
-	.erfaring-container .vis-mer-container,
-	.utdanning-container .vis-mer-container {
-		margin-left: 173.5px;
+	:global(.erfaring-container .vis-mer-container),
+	:global(.utdanning-container .vis-mer-container) {
+		margin-left: 173px;
 	}
 
-	.erfaring-container .vis-mer-knapp,
-	.utdanning-container .vis-mer-knapp {
+	:global(.erfaring-container .vis-mer-knapp),
+	:global(.utdanning-container .vis-mer-knapp) {
 		padding: 0;
 	}
 }
