@@ -1,8 +1,6 @@
 .vis-mer-container {
 	margin-top: 1rem;
 }
-
-/* Når perioden er til venstre av timelinen (store skjermer) */
 @media (min-width: 1101px) {
 	.erfaring-container .vis-mer-container,
 	.utdanning-container .vis-mer-container {

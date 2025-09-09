@@ -3,12 +3,15 @@ import type { Utdanning } from '../data/utdanning';
 import VisMerKnapp from './VisMerKnapp';
 import './Utdanning.css';
 
-interface Props {
+interface UtdanningProps {
 	readonly utdanning: Utdanning[];
 	readonly antallSynlige?: number;
 }
 
-export default function Utdanning({ utdanning, antallSynlige = 1 }: Props) {
+export default function Utdanning({
+	utdanning,
+	antallSynlige = 1,
+}: UtdanningProps) {
 	const [visAlle, setVisAlle] = useState(false);
 	const synligUtdanning = visAlle
 		? utdanning

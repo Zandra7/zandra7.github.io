@@ -1,6 +1,6 @@
 import './VisMerKnapp.css';
 
-interface Props {
+interface VisMerProps {
 	readonly visAlle: boolean;
 	readonly onClick: () => void;
 	readonly visMerTekst?: string;
@@ -12,7 +12,7 @@ export default function VisMerKnapp({
 	onClick,
 	visMerTekst = 'Vis mer',
 	visMindreTekst = 'Vis mindre',
-}: Props) {
+}: VisMerProps) {
 	return (
 		<div className="vis-mer-container ">
 			<button className="vis-mer-knapp subtle" onClick={onClick}>

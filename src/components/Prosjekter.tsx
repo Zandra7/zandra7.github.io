@@ -3,12 +3,15 @@ import type { Prosjekt } from '../data/prosjekter';
 import VisMerKnapp from './VisMerKnapp';
 import './Prosjekter.css';
 
-interface Props {
+interface ProsjekterProps {
 	readonly prosjekter: Prosjekt[];
 	readonly antallSynlige?: number;
 }
 
-export default function Prosjekter({ prosjekter, antallSynlige = 2 }: Props) {
+export default function Prosjekter({
+	prosjekter,
+	antallSynlige = 2,
+}: ProsjekterProps) {
 	const [visAlle, setVisAlle] = useState(false);
 	const synligeProsjekter = visAlle
 		? prosjekter

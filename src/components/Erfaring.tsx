@@ -3,12 +3,12 @@ import type { Jobb } from '../data/erfaring';
 import VisMerKnapp from './VisMerKnapp';
 import './Erfaring.css';
 
-interface Props {
+interface ErfaringProps {
 	readonly jobber: Jobb[];
 	readonly antallSynlige?: number;
 }
 
-export default function Erfaring({ jobber, antallSynlige = 2 }: Props) {
+export default function Erfaring({ jobber, antallSynlige = 2 }: ErfaringProps) {
 	const [visAlle, setVisAlle] = useState(false);
 	const synligeJobber = visAlle ? jobber : jobber.slice(0, antallSynlige);
 	const harSkjulteJobber = jobber.length > antallSynlige;
@@ -37,9 +37,9 @@ export default function Erfaring({ jobber, antallSynlige = 2 }: Props) {
 								))}
 							</ul>
 							<ul className="teknologier">
-								{jobb.teknologier.map((tech) => (
-									<li key={tech} className="teknologi">
-										# {tech}
+								{jobb.teknologier.map((teknologi) => (
+									<li key={teknologi} className="teknologi">
+										# {teknologi}
 									</li>
 								))}
 							</ul>
