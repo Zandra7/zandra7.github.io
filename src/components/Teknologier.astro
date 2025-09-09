@@ -1,6 +1,7 @@
 ---
 import '../styles/main.css';
 import { jobber } from '../data/erfaring';
+import TeknologiListe from './TeknologiListe.astro';
 
 const alleTeknologier = jobber.flatMap((jobb) => jobb.teknologier);
 const unikeTeknologier = [...new Set(alleTeknologier)].sort();
@@ -8,11 +9,5 @@ const unikeTeknologier = [...new Set(alleTeknologier)].sort();
 
 <div>
 	<h2>Teknologier</h2>
-	<ul class="teknologier">
-		{
-			unikeTeknologier.map((teknologi) => (
-				<li class="teknologi"># {teknologi}</li>
-			))
-		}
-	</ul>
+	<TeknologiListe teknologier={unikeTeknologier} />
 </div>

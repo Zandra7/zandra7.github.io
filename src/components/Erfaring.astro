@@ -1,6 +1,7 @@
 ---
 import type { Jobb } from '../data/erfaring';
 import VisMerKnapp from './VisMerKnapp.astro';
+import TeknologiListe from './TeknologiListe.astro';
 
 interface Props {
 	jobber: Jobb[];
@@ -35,11 +36,7 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 								<li>{punkt}</li>
 							))}
 						</ul>
-						<ul class="teknologier">
-							{jobb.teknologier.map((teknologi) => (
-								<li class="teknologi"># {teknologi}</li>
-							))}
-						</ul>
+						<TeknologiListe teknologier={jobb.teknologier} />
 					</div>
 				</div>
 			))
@@ -64,11 +61,7 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 								<li>{punkt}</li>
 							))}
 						</ul>
-						<ul class="teknologier">
-							{jobb.teknologier.map((teknologi) => (
-								<li class="teknologi"># {teknologi}</li>
-							))}
-						</ul>
+						<TeknologiListe teknologier={jobb.teknologier} />
 					</div>
 				</div>
 			))

@@ -1,6 +1,7 @@
 ---
 import type { Prosjekt } from '../data/prosjekter';
 import VisMerKnapp from './VisMerKnapp.astro';
+import TeknologiListe from './TeknologiListe.astro';
 
 interface Props {
 	prosjekter: Prosjekt[];
@@ -24,11 +25,7 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 				<div class="prosjekt-item">
 					<h3>{prosjekt.navn}</h3>
 					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
-					<ul class="teknologier">
-						{prosjekt.teknologier.map((teknologi) => (
-							<li class="teknologi"># {teknologi}</li>
-						))}
-					</ul>
+					<TeknologiListe teknologier={prosjekt.teknologier} />
 				</div>
 			))
 		}
@@ -37,11 +34,7 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 				<div class="prosjekt-item skjult-prosjekt" style="display: none;">
 					<h3>{prosjekt.navn}</h3>
 					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
-					<ul class="teknologier">
-						{prosjekt.teknologier.map((teknologi) => (
-							<li class="teknologi"># {teknologi}</li>
-						))}
-					</ul>
+					<TeknologiListe teknologier={prosjekt.teknologier} />
 				</div>
 			))
 		}

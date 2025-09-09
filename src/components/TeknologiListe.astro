@@ -1,0 +1,33 @@
+---
+interface Props {
+	teknologier: string[];
+	className?: string;
+}
+
+const { teknologier, className = '' } = Astro.props;
+---
+
+<ul class={`teknologier ${className}`.trim()}>
+	{teknologier.map((teknologi) => <li class="teknologi"># {teknologi}</li>)}
+</ul>
+
+<style>
+	.teknologier {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.teknologi {
+		display: inline-block;
+		background-color: rgba(222, 98, 98, 0.1);
+		color: #de6262;
+		padding: 0.25rem 0.75rem;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
+		border: 1px solid rgba(222, 98, 98, 0.2);
+	}
+</style>

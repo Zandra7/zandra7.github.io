@@ -34,24 +34,6 @@
 	line-height: 1.5;
 }
 
-.prosjekter-container .teknologier {
-	margin: 0;
-	list-style: none;
-	padding-left: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-}
-
-.prosjekter-container .teknologi {
-	display: inline-block;
-	background-color: rgba(222, 98, 98, 0.1);
-	color: #de6262;
-	padding: 0.25rem 0.5rem;
-	border-radius: 0.25rem;
-	font-size: 0.875rem;
-}
-
 @media (max-width: 768px) {
 	.prosjekter-container .prosjekt-item {
 		min-width: 100%;

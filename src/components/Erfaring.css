@@ -64,15 +64,6 @@
 	color: #de6262;
 }
 
-.erfaring-container .teknologi {
-	display: inline-block;
-	background-color: rgba(222, 98, 98, 0.1);
-	color: #de6262;
-	padding: 0.25rem 0.5rem;
-	border-radius: 0.25rem;
-	margin: 0.5rem 0 0.5rem 0;
-}
-
 @media (max-width: 1100px) {
 	.erfaring-container .job {
 		grid-template-columns: 30px 1fr;
