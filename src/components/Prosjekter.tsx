@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Prosjekt } from '../data/prosjekter';
+import VisMerKnapp from './VisMerKnapp';
 import './Prosjekter.css';
 
 interface Props {
@@ -33,14 +34,7 @@ export default function Prosjekter({ prosjekter, antallSynlige = 2 }: Props) {
 				))}
 			</div>
 			{harSkjulteProsjekter && (
-				<div className="vis-mer-container">
-					<button
-						className="vis-mer-knapp"
-						onClick={() => setVisAlle(!visAlle)}
-					>
-						{visAlle ? 'Vis mindre' : 'Vis mer'}
-					</button>
-				</div>
+				<VisMerKnapp visAlle={visAlle} onClick={() => setVisAlle(!visAlle)} />
 			)}
 		</div>
 	);

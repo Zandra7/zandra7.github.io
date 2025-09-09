@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Utdanning } from '../data/utdanning';
+import VisMerKnapp from './VisMerKnapp';
 import './Utdanning.css';
 
 interface Props {
@@ -41,14 +42,7 @@ export default function Utdanning({ utdanning, antallSynlige = 1 }: Props) {
 				))}
 			</div>
 			{harSkjultUtdanning && (
-				<div className="vis-mer-container">
-					<button
-						className="vis-mer-knapp"
-						onClick={() => setVisAlle(!visAlle)}
-					>
-						{visAlle ? 'Vis mindre' : 'Vis mer'}
-					</button>
-				</div>
+				<VisMerKnapp visAlle={visAlle} onClick={() => setVisAlle(!visAlle)} />
 			)}
 		</div>
 	);
