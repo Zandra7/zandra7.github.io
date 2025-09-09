@@ -1,0 +1,59 @@
+.prosjekter-container {
+	margin-bottom: 2rem;
+}
+
+.prosjekter-container .prosjekter-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+.prosjekter-container .prosjekt-item {
+	background-color: rgba(222, 98, 98, 0.05);
+	border-radius: 10px;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	flex: 1;
+	min-width: 300px;
+	max-width: 450px;
+}
+
+.prosjekter-container h2 {
+	margin-bottom: 2rem;
+}
+
+.prosjekter-container h3 {
+	margin: 0;
+	color: #de6262;
+}
+
+.prosjekter-container .beskrivelse {
+	margin: 0;
+	line-height: 1.5;
+}
+
+.prosjekter-container .teknologier {
+	margin: 0;
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.prosjekter-container .teknologi {
+	display: inline-block;
+	background-color: rgba(222, 98, 98, 0.1);
+	color: #de6262;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+	.prosjekter-container .prosjekt-item {
+		min-width: 100%;
+	}
+}

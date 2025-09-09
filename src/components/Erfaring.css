@@ -1,0 +1,98 @@
+.erfaring-container .job {
+	display: grid;
+	grid-template-columns: 150px 30px 1fr;
+	gap: 1rem;
+	margin-bottom: 3rem;
+}
+
+.erfaring-container .periode {
+	text-align: right;
+	margin: 0;
+}
+
+.erfaring-container .timeline-right .periode {
+	display: none;
+}
+
+.erfaring-container .timeline-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.erfaring-container .timeline-dot {
+	width: 8px;
+	height: 8px;
+	background-color: #de6262;
+	border-radius: 50%;
+	margin: 0.5rem 0 0.5rem 0;
+}
+
+.erfaring-container .timeline-line-bottom {
+	width: 2px;
+	background-color: #de6262;
+	flex-grow: 1;
+	margin-top: 0.5rem;
+	margin-bottom: -2.5rem;
+}
+
+.erfaring-container h3,
+.erfaring-container h4 {
+	margin: 0;
+}
+
+.erfaring-container .bedrift {
+	margin-top: 0.25rem;
+}
+
+.erfaring-container ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.erfaring-container ul:not(.teknologier) li {
+	position: relative;
+	padding-left: 1rem;
+	margin-bottom: 0.25rem;
+}
+
+.erfaring-container ul:not(.teknologier) li::before {
+	content: '•';
+	position: absolute;
+	left: 0;
+	color: #de6262;
+}
+
+.erfaring-container .teknologi {
+	display: inline-block;
+	background-color: rgba(222, 98, 98, 0.1);
+	color: #de6262;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	margin: 0.5rem 0 0.5rem 0;
+}
+
+@media (max-width: 1100px) {
+	.erfaring-container .job {
+		grid-template-columns: 30px 1fr;
+		gap: 1rem;
+	}
+
+	.erfaring-container .timeline-left {
+		display: none;
+	}
+
+	.erfaring-container .timeline-right {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.erfaring-container .timeline-right .periode {
+		display: block;
+		order: -1;
+		text-align: left;
+		margin-bottom: 0.5rem;
+		color: #de6262;
+	}
+}
