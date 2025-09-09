@@ -22,26 +22,31 @@ const { visMerTekst = 'Vis mer', visMindreTekst = 'Vis mindre' } = Astro.props;
 				stroke="currentColor"
 				stroke-width="2"
 				stroke-linecap="round"
-				stroke-linejoin="round"
-			></path>
+				stroke-linejoin="round"></path>
 		</svg>
 		<span class="knapp-tekst vis-mer-tekst">{visMerTekst}</span>
-		<span class="knapp-tekst vis-mindre-tekst" style="display: none;">{visMindreTekst}</span>
+		<span class="knapp-tekst vis-mindre-tekst" style="display: none;"
+			>{visMindreTekst}</span
+		>
 	</button>
 </div>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener('DOMContentLoaded', function () {
 		const buttons = document.querySelectorAll('.vis-mer-knapp');
-		
-		buttons.forEach(button => {
-			button.addEventListener('click', function() {
-				const pilIkon = this.querySelector('.pil-ikon');
-				const visMerTekst = this.querySelector('.vis-mer-tekst');
-				const visMindreTekst = this.querySelector('.vis-mindre-tekst');
-				
+
+		buttons.forEach((button) => {
+			button.addEventListener('click', function () {
+				const pilIkon = button.querySelector('.pil-ikon');
+				const visMerTekst = button.querySelector(
+					'.vis-mer-tekst'
+				) as HTMLElement;
+				const visMindreTekst = button.querySelector(
+					'.vis-mindre-tekst'
+				) as HTMLElement;
+
 				pilIkon?.classList.toggle('rotert');
-				
+
 				if (visMerTekst && visMindreTekst) {
 					if (visMerTekst.style.display === 'none') {
 						visMerTekst.style.display = '';
