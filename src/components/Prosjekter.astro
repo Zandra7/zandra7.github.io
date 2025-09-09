@@ -1,0 +1,85 @@
+---
+import type { Prosjekt } from '../data/prosjekter';
+import VisMerKnapp from './VisMerKnapp.astro';
+
+interface Props {
+	prosjekter: Prosjekt[];
+	antallSynlige?: number;
+}
+
+const { prosjekter, antallSynlige = 2 } = Astro.props;
+const synligeProsjekter = prosjekter.slice(0, antallSynlige);
+const harSkjulteProsjekter = prosjekter.length > antallSynlige;
+---
+
+<div class="prosjekter-container">
+	<h2>Prosjekter</h2>
+	<div
+		class="prosjekter-list"
+		data-alle-prosjekter={JSON.stringify(prosjekter)}
+		data-antall-synlige={antallSynlige}
+	>
+		{
+			synligeProsjekter.map((prosjekt, index) => (
+				<div class="prosjekt-item">
+					<h3>{prosjekt.navn}</h3>
+					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
+					<ul class="teknologier">
+						{prosjekt.teknologier.map((teknologi) => (
+							<li class="teknologi"># {teknologi}</li>
+						))}
+					</ul>
+				</div>
+			))
+		}
+		{
+			prosjekter.slice(antallSynlige).map((prosjekt, index) => (
+				<div class="prosjekt-item skjult-prosjekt" style="display: none;">
+					<h3>{prosjekt.navn}</h3>
+					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
+					<ul class="teknologier">
+						{prosjekt.teknologier.map((teknologi) => (
+							<li class="teknologi"># {teknologi}</li>
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</div>
+	{
+		harSkjulteProsjekter && (
+			<VisMerKnapp
+				visMerTekst="Vis flere prosjekter"
+				visMindreTekst="Vis færre prosjekter"
+			/>
+		)
+	}
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const prosjekterContainer = document.querySelector('.prosjekter-container');
+		if (!prosjekterContainer) return;
+
+		const button = prosjekterContainer.querySelector('.vis-mer-knapp');
+		if (!button) return;
+
+		button.addEventListener('click', function () {
+			const skjulteProsjekter = prosjekterContainer.querySelectorAll(
+				'.skjult-prosjekt'
+			) as NodeListOf<HTMLElement>;
+
+			skjulteProsjekter.forEach((prosjekt) => {
+				if (prosjekt.style.display === 'none') {
+					prosjekt.style.display = '';
+				} else {
+					prosjekt.style.display = 'none';
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	@import './Prosjekter.css';
+</style>

@@ -1,0 +1,101 @@
+---
+import type { Utdanning } from '../data/utdanning';
+import VisMerKnapp from './VisMerKnapp.astro';
+
+interface Props {
+	utdanning: Utdanning[];
+	antallSynlige?: number;
+}
+
+const { utdanning, antallSynlige = 1 } = Astro.props;
+const synligUtdanning = utdanning.slice(0, antallSynlige);
+const harSkjultUtdanning = utdanning.length > antallSynlige;
+---
+
+<div class="utdanning-container">
+	<h2>Utdanning</h2>
+	<div class="timeline">
+		{
+			synligUtdanning.map((skole, index) => (
+				<div class="utdanning-item">
+					<div class="timeline-left">
+						<p class="periode">{skole.periode}</p>
+					</div>
+					<div class="timeline-center">
+						<div class="timeline-dot" />
+						<div class="timeline-line-bottom" />
+					</div>
+					<div class="timeline-right">
+						<p class="periode">{skole.periode}</p>
+						<h3>{skole.skole}</h3>
+						<p class="program subtle">{skole.program}</p>
+						<ul class="detaljer">
+							{skole.detaljer.map((detalj) => (
+								<li>{detalj}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			))
+		}
+		{
+			utdanning.slice(antallSynlige).map((skole, index) => (
+				<div class="utdanning-item skjult-utdanning" style="display: none;">
+					<div class="timeline-left">
+						<p class="periode">{skole.periode}</p>
+					</div>
+					<div class="timeline-center">
+						<div class="timeline-dot" />
+						<div class="timeline-line-bottom" />
+					</div>
+					<div class="timeline-right">
+						<p class="periode">{skole.periode}</p>
+						<h3>{skole.skole}</h3>
+						<p class="program subtle">{skole.program}</p>
+						<ul class="detaljer">
+							{skole.detaljer.map((detalj) => (
+								<li>{detalj}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			))
+		}
+	</div>
+	{
+		harSkjultUtdanning && (
+			<VisMerKnapp
+				visMerTekst="Vis mer utdanning"
+				visMindreTekst="Vis mindre utdanning"
+			/>
+		)
+	}
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const utdanningContainer = document.querySelector('.utdanning-container');
+		if (!utdanningContainer) return;
+
+		const button = utdanningContainer.querySelector('.vis-mer-knapp');
+		if (!button) return;
+
+		button.addEventListener('click', function () {
+			const skjultUtdanning = utdanningContainer.querySelectorAll(
+				'.skjult-utdanning'
+			) as NodeListOf<HTMLElement>;
+
+			skjultUtdanning.forEach((skole) => {
+				if (skole.style.display === 'none') {
+					skole.style.display = '';
+				} else {
+					skole.style.display = 'none';
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	@import './Utdanning.css';
+</style>

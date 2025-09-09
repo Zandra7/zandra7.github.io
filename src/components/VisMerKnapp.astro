@@ -1,0 +1,61 @@
+---
+interface Props {
+	visMerTekst?: string;
+	visMindreTekst?: string;
+}
+
+const { visMerTekst = 'Vis mer', visMindreTekst = 'Vis mindre' } = Astro.props;
+---
+
+<div class="vis-mer-container">
+	<button class="vis-mer-knapp subtle" type="button">
+		<svg
+			class="pil-ikon"
+			width="16"
+			height="16"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M7 10L12 15L17 10"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></path>
+		</svg>
+		<span class="knapp-tekst vis-mer-tekst">{visMerTekst}</span>
+		<span class="knapp-tekst vis-mindre-tekst" style="display: none;">{visMindreTekst}</span>
+	</button>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const buttons = document.querySelectorAll('.vis-mer-knapp');
+		
+		buttons.forEach(button => {
+			button.addEventListener('click', function() {
+				const pilIkon = this.querySelector('.pil-ikon');
+				const visMerTekst = this.querySelector('.vis-mer-tekst');
+				const visMindreTekst = this.querySelector('.vis-mindre-tekst');
+				
+				pilIkon?.classList.toggle('rotert');
+				
+				if (visMerTekst && visMindreTekst) {
+					if (visMerTekst.style.display === 'none') {
+						visMerTekst.style.display = '';
+						visMindreTekst.style.display = 'none';
+					} else {
+						visMerTekst.style.display = 'none';
+						visMindreTekst.style.display = '';
+					}
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	@import './VisMerKnapp.css';
+</style>

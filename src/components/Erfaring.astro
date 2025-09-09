@@ -1,0 +1,113 @@
+---
+import type { Jobb } from '../data/erfaring';
+import VisMerKnapp from './VisMerKnapp.astro';
+
+interface Props {
+	jobber: Jobb[];
+	antallSynlige?: number;
+}
+
+const { jobber, antallSynlige = 2 } = Astro.props;
+const synligeJobber = jobber.slice(0, antallSynlige);
+const harSkjulteJobber = jobber.length > antallSynlige;
+---
+
+<div class="erfaring-container">
+	<h2>Erfaring</h2>
+	<div class="timeline">
+		{
+			synligeJobber.map((jobb, index) => (
+				<div class="job">
+					<div class="timeline-left">
+						<p class="periode">{jobb.periode}</p>
+					</div>
+					<div class="timeline-center">
+						<div class="timeline-dot" />
+						<div class="timeline-line-bottom" />
+					</div>
+					<div class="timeline-right">
+						<p class="periode">{jobb.periode}</p>
+						<h3>{jobb.tittel}</h3>
+						<p class="bedrift subtle">{jobb.bedrift}</p>
+						<h4>Oppsummering:</h4>
+						<ul>
+							{jobb.beskrivelse.map((punkt) => (
+								<li>{punkt}</li>
+							))}
+						</ul>
+						<ul class="teknologier">
+							{jobb.teknologier.map((teknologi) => (
+								<li class="teknologi"># {teknologi}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			))
+		}
+		{
+			jobber.slice(antallSynlige).map((jobb, index) => (
+				<div class="job skjult-jobb" style="display: none;">
+					<div class="timeline-left">
+						<p class="periode">{jobb.periode}</p>
+					</div>
+					<div class="timeline-center">
+						<div class="timeline-dot" />
+						<div class="timeline-line-bottom" />
+					</div>
+					<div class="timeline-right">
+						<p class="periode">{jobb.periode}</p>
+						<h3>{jobb.tittel}</h3>
+						<p class="bedrift subtle">{jobb.bedrift}</p>
+						<h4>Oppsummering:</h4>
+						<ul>
+							{jobb.beskrivelse.map((punkt) => (
+								<li>{punkt}</li>
+							))}
+						</ul>
+						<ul class="teknologier">
+							{jobb.teknologier.map((teknologi) => (
+								<li class="teknologi"># {teknologi}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			))
+		}
+	</div>
+	{
+		harSkjulteJobber && (
+			<VisMerKnapp
+				visMerTekst="Vis mer erfaring"
+				visMindreTekst="Vis mindre erfaring"
+			/>
+		)
+	}
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const erfaringContainer = document.querySelector('.erfaring-container');
+		if (!erfaringContainer) return;
+
+		const button = erfaringContainer.querySelector('.vis-mer-knapp');
+		if (!button) return;
+
+		button.addEventListener('click', function () {
+			const skjulteJobber = erfaringContainer.querySelectorAll(
+				'.skjult-jobb'
+			) as NodeListOf<HTMLElement>;
+
+			skjulteJobber.forEach((jobb) => {
+				if (jobb.style.display === 'none') {
+					jobb.style.display = '';
+				} else {
+					jobb.style.display = 'none';
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	@import './Erfaring.css';
+</style>
