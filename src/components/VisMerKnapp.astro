@@ -1,4 +1,6 @@
 ---
+import Icon from './icons/Icon.astro';
+
 interface Props {
 	visMerTekst?: string;
 	visMindreTekst?: string;
@@ -9,21 +11,7 @@ const { visMerTekst = 'Vis mer', visMindreTekst = 'Vis mindre' } = Astro.props;
 
 <div class="vis-mer-container">
 	<button class="vis-mer-knapp subtle" type="button">
-		<svg
-			class="pil-ikon"
-			width="16"
-			height="16"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				d="M7 10L12 15L17 10"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"></path>
-		</svg>
+		<Icon name="chevron-down" width={16} height={16} class="pil-ikon" />
 		<span class="knapp-tekst vis-mer-tekst">{visMerTekst}</span>
 		<span class="knapp-tekst vis-mindre-tekst" style="display: none;"
 			>{visMindreTekst}</span
