@@ -9,3 +9,9 @@
 .social-icons svg:hover {
 	color: #e89494;
 }
+
+.location-icon {
+	vertical-align: top;
+	margin-right: 0.25rem;
+	color: white;
+}
