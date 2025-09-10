@@ -11,7 +11,7 @@ const { utdanning, antallSynlige = 1 } = Astro.props;
 const harSkjultUtdanning = utdanning.length > antallSynlige;
 ---
 
-<div class="utdanning-container">
+<div class="utdanning-container" data-vis-mer-container>
 	<h2>Utdanning</h2>
 	<div class="timeline">
 		{
@@ -19,7 +19,7 @@ const harSkjultUtdanning = utdanning.length > antallSynlige;
 				const erSkjult = index >= antallSynlige;
 				return (
 					<div
-						class={`utdanning-item ${erSkjult ? 'skjult-utdanning' : ''}`}
+						class={`utdanning-item ${erSkjult ? 'skjult-element' : ''}`}
 						style={erSkjult ? 'display: none;' : ''}
 					>
 						<div class="timeline-left">
@@ -49,34 +49,11 @@ const harSkjultUtdanning = utdanning.length > antallSynlige;
 			<VisMerKnapp
 				visMerTekst="Vis mer utdanning"
 				visMindreTekst="Vis mindre utdanning"
+				targetSelector=".skjult-element"
 			/>
 		)
 	}
 </div>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const utdanningContainer = document.querySelector('.utdanning-container');
-		if (!utdanningContainer) return;
-
-		const button = utdanningContainer.querySelector('.vis-mer-knapp');
-		if (!button) return;
-
-		button.addEventListener('click', function () {
-			const skjultUtdanning = utdanningContainer.querySelectorAll(
-				'.skjult-utdanning'
-			) as NodeListOf<HTMLElement>;
-
-			skjultUtdanning.forEach((skole) => {
-				if (skole.style.display === 'none') {
-					skole.style.display = '';
-				} else {
-					skole.style.display = 'none';
-				}
-			});
-		});
-	});
-</script>
 
 <style>
 	@import './Utdanning.css';

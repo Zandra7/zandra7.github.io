@@ -4,13 +4,22 @@ import Icon from './icons/Icon.astro';
 interface Props {
 	visMerTekst?: string;
 	visMindreTekst?: string;
+	targetSelector?: string;
 }
 
-const { visMerTekst = 'Vis mer', visMindreTekst = 'Vis mindre' } = Astro.props;
+const {
+	visMerTekst = 'Vis mer',
+	visMindreTekst = 'Vis mindre',
+	targetSelector = '.skjult-element',
+} = Astro.props;
 ---
 
 <div class="vis-mer-container">
-	<button class="vis-mer-knapp subtle" type="button">
+	<button
+		class="vis-mer-knapp subtle"
+		type="button"
+		data-target-selector={targetSelector}
+	>
 		<Icon name="chevron-down" width={16} height={16} class="pil-ikon" />
 		<span class="knapp-tekst vis-mer-tekst">{visMerTekst}</span>
 		<span class="knapp-tekst vis-mindre-tekst" style="display: none;"
@@ -32,6 +41,8 @@ const { visMerTekst = 'Vis mer', visMindreTekst = 'Vis mindre' } = Astro.props;
 				const visMindreTekst = button.querySelector(
 					'.vis-mindre-tekst'
 				) as HTMLElement;
+				const targetSelector =
+					button.getAttribute('data-target-selector') || '.skjult-element';
 
 				pilIkon?.classList.toggle('rotert');
 
@@ -43,6 +54,23 @@ const { visMerTekst = 'Vis mer', visMindreTekst = 'Vis mindre' } = Astro.props;
 						visMerTekst.style.display = 'none';
 						visMindreTekst.style.display = '';
 					}
+				}
+
+				const container = button.closest(
+					'[data-vis-mer-container]'
+				) as HTMLElement;
+				if (container) {
+					const elementerÅToggle = container.querySelectorAll(
+						targetSelector
+					) as NodeListOf<HTMLElement>;
+
+					elementerÅToggle.forEach((element) => {
+						if (element.style.display === 'none') {
+							element.style.display = '';
+						} else {
+							element.style.display = 'none';
+						}
+					});
 				}
 			});
 		});

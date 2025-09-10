@@ -12,7 +12,7 @@ const { jobber, antallSynlige = 2 } = Astro.props;
 const harSkjulteJobber = jobber.length > antallSynlige;
 ---
 
-<div class="erfaring-container">
+<div class="erfaring-container" data-vis-mer-container>
 	<h2>Erfaring</h2>
 	<div class="timeline">
 		{
@@ -20,7 +20,7 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 				const erSkjult = index >= antallSynlige;
 				return (
 					<div
-						class={`job ${erSkjult ? 'skjult-jobb' : ''}`}
+						class={`job ${erSkjult ? 'skjult-element' : ''}`}
 						style={erSkjult ? 'display: none;' : ''}
 					>
 						<div class="timeline-left">
@@ -52,34 +52,11 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 			<VisMerKnapp
 				visMerTekst="Vis mer erfaring"
 				visMindreTekst="Vis mindre erfaring"
+				targetSelector=".skjult-element"
 			/>
 		)
 	}
 </div>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const erfaringContainer = document.querySelector('.erfaring-container');
-		if (!erfaringContainer) return;
-
-		const button = erfaringContainer.querySelector('.vis-mer-knapp');
-		if (!button) return;
-
-		button.addEventListener('click', function () {
-			const skjulteJobber = erfaringContainer.querySelectorAll(
-				'.skjult-jobb'
-			) as NodeListOf<HTMLElement>;
-
-			skjulteJobber.forEach((jobb) => {
-				if (jobb.style.display === 'none') {
-					jobb.style.display = '';
-				} else {
-					jobb.style.display = 'none';
-				}
-			});
-		});
-	});
-</script>
 
 <style>
 	@import './Erfaring.css';
