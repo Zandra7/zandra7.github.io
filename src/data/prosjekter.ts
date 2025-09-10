@@ -16,6 +16,20 @@ export const prosjekter: Prosjekt[] = [
 		link: 'https://github.com/Zandra7/kotlin-Tic-Tac-Toe',
 	},
 	{
+		navn: 'Middagshjelp',
+		beskrivelse:
+			'En fullstack webapplikasjon som lar deg lagre og hente ut tilfeldige middagsretter fra en database.',
+		teknologier: [
+			'React',
+			'TypeScript',
+			'Kotlin',
+			'Ktor',
+			'PostgreSQL',
+			'Docker',
+		],
+		link: 'https://github.com/Zandra7/fullstack-app',
+	},
+	{
 		navn: 'Brainstorming-app',
 		type: 'skoleprosjekt',
 		beskrivelse:
