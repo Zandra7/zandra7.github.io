@@ -1,9 +1,13 @@
 ---
 import '../styles/main.css';
 import { jobber } from '../data/erfaring';
+import { prosjekter } from '../data/prosjekter';
 import TeknologiListe from './TeknologiListe.astro';
 
-const alleTeknologier = jobber.flatMap((jobb) => jobb.teknologier);
+const alleTeknologier = [
+	...jobber.flatMap((jobb) => jobb.teknologier),
+	...prosjekter.flatMap((prosjekt) => prosjekt.teknologier),
+];
 const unikeTeknologier = [...new Set(alleTeknologier)].sort();
 ---
 
