@@ -9,7 +9,6 @@ interface Props {
 }
 
 const { prosjekter, antallSynlige = 2 } = Astro.props;
-const synligeProsjekter = prosjekter.slice(0, antallSynlige);
 const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 ---
 
@@ -21,33 +20,25 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 		data-antall-synlige={antallSynlige}
 	>
 		{
-			synligeProsjekter.map((prosjekt, index) => (
-				<div
-					class="prosjekt-item"
-					data-link={prosjekt.link}
-					style="cursor: pointer;"
-				>
-					<div class="prosjekt-header">
-						<h3>{prosjekt.navn}</h3>
-						<p class="subtle">{prosjekt.type}</p>
+			prosjekter.map((prosjekt, index) => {
+				const erSkjult = index >= antallSynlige;
+				return (
+					<div
+						class={`prosjekt-item ${erSkjult ? 'skjult-prosjekt' : ''}`}
+						data-link={prosjekt.link}
+						style={
+							erSkjult ? 'display: none; cursor: pointer;' : 'cursor: pointer;'
+						}
+					>
+						<div class="prosjekt-header">
+							<h3>{prosjekt.navn}</h3>
+							<p class="subtle">{prosjekt.type}</p>
+						</div>
+						<p class="beskrivelse">{prosjekt.beskrivelse}</p>
+						<TeknologiListe teknologier={prosjekt.teknologier} />
 					</div>
-					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
-					<TeknologiListe teknologier={prosjekt.teknologier} />
-				</div>
-			))
-		}
-		{
-			prosjekter.slice(antallSynlige).map((prosjekt, index) => (
-				<div
-					class="prosjekt-item skjult-prosjekt"
-					data-link={prosjekt.link}
-					style="display: none; cursor: pointer;"
-				>
-					<h3>{prosjekt.navn}</h3>
-					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
-					<TeknologiListe teknologier={prosjekt.teknologier} />
-				</div>
-			))
+				);
+			})
 		}
 	</div>
 	{

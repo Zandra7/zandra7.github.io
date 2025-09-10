@@ -9,7 +9,6 @@ interface Props {
 }
 
 const { jobber, antallSynlige = 2 } = Astro.props;
-const synligeJobber = jobber.slice(0, antallSynlige);
 const harSkjulteJobber = jobber.length > antallSynlige;
 ---
 
@@ -17,54 +16,35 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 	<h2>Erfaring</h2>
 	<div class="timeline">
 		{
-			synligeJobber.map((jobb, index) => (
-				<div class="job">
-					<div class="timeline-left">
-						<p class="periode">{jobb.periode}</p>
+			jobber.map((jobb, index) => {
+				const erSkjult = index >= antallSynlige;
+				return (
+					<div
+						class={`job ${erSkjult ? 'skjult-jobb' : ''}`}
+						style={erSkjult ? 'display: none;' : ''}
+					>
+						<div class="timeline-left">
+							<p class="periode">{jobb.periode}</p>
+						</div>
+						<div class="timeline-center">
+							<div class="timeline-dot" />
+							<div class="timeline-line-bottom" />
+						</div>
+						<div class="timeline-right">
+							<p class="periode">{jobb.periode}</p>
+							<h3>{jobb.tittel}</h3>
+							<p class="bedrift subtle">{jobb.bedrift}</p>
+							<h4>Oppsummering:</h4>
+							<ul>
+								{jobb.beskrivelse.map((punkt) => (
+									<li>{punkt}</li>
+								))}
+							</ul>
+							<TeknologiListe teknologier={jobb.teknologier} />
+						</div>
 					</div>
-					<div class="timeline-center">
-						<div class="timeline-dot" />
-						<div class="timeline-line-bottom" />
-					</div>
-					<div class="timeline-right">
-						<p class="periode">{jobb.periode}</p>
-						<h3>{jobb.tittel}</h3>
-						<p class="bedrift subtle">{jobb.bedrift}</p>
-						<h4>Oppsummering:</h4>
-						<ul>
-							{jobb.beskrivelse.map((punkt) => (
-								<li>{punkt}</li>
-							))}
-						</ul>
-						<TeknologiListe teknologier={jobb.teknologier} />
-					</div>
-				</div>
-			))
-		}
-		{
-			jobber.slice(antallSynlige).map((jobb, index) => (
-				<div class="job skjult-jobb" style="display: none;">
-					<div class="timeline-left">
-						<p class="periode">{jobb.periode}</p>
-					</div>
-					<div class="timeline-center">
-						<div class="timeline-dot" />
-						<div class="timeline-line-bottom" />
-					</div>
-					<div class="timeline-right">
-						<p class="periode">{jobb.periode}</p>
-						<h3>{jobb.tittel}</h3>
-						<p class="bedrift subtle">{jobb.bedrift}</p>
-						<h4>Oppsummering:</h4>
-						<ul>
-							{jobb.beskrivelse.map((punkt) => (
-								<li>{punkt}</li>
-							))}
-						</ul>
-						<TeknologiListe teknologier={jobb.teknologier} />
-					</div>
-				</div>
-			))
+				);
+			})
 		}
 	</div>
 	{

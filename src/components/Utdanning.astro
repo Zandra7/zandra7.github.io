@@ -8,7 +8,6 @@ interface Props {
 }
 
 const { utdanning, antallSynlige = 1 } = Astro.props;
-const synligUtdanning = utdanning.slice(0, antallSynlige);
 const harSkjultUtdanning = utdanning.length > antallSynlige;
 ---
 
@@ -16,50 +15,33 @@ const harSkjultUtdanning = utdanning.length > antallSynlige;
 	<h2>Utdanning</h2>
 	<div class="timeline">
 		{
-			synligUtdanning.map((skole, index) => (
-				<div class="utdanning-item">
-					<div class="timeline-left">
-						<p class="periode">{skole.periode}</p>
+			utdanning.map((skole, index) => {
+				const erSkjult = index >= antallSynlige;
+				return (
+					<div
+						class={`utdanning-item ${erSkjult ? 'skjult-utdanning' : ''}`}
+						style={erSkjult ? 'display: none;' : ''}
+					>
+						<div class="timeline-left">
+							<p class="periode">{skole.periode}</p>
+						</div>
+						<div class="timeline-center">
+							<div class="timeline-dot" />
+							<div class="timeline-line-bottom" />
+						</div>
+						<div class="timeline-right">
+							<p class="periode">{skole.periode}</p>
+							<h3>{skole.skole}</h3>
+							<p class="program subtle">{skole.program}</p>
+							<ul class="detaljer">
+								{skole.detaljer.map((detalj) => (
+									<li>{detalj}</li>
+								))}
+							</ul>
+						</div>
 					</div>
-					<div class="timeline-center">
-						<div class="timeline-dot" />
-						<div class="timeline-line-bottom" />
-					</div>
-					<div class="timeline-right">
-						<p class="periode">{skole.periode}</p>
-						<h3>{skole.skole}</h3>
-						<p class="program subtle">{skole.program}</p>
-						<ul class="detaljer">
-							{skole.detaljer.map((detalj) => (
-								<li>{detalj}</li>
-							))}
-						</ul>
-					</div>
-				</div>
-			))
-		}
-		{
-			utdanning.slice(antallSynlige).map((skole, index) => (
-				<div class="utdanning-item skjult-utdanning" style="display: none;">
-					<div class="timeline-left">
-						<p class="periode">{skole.periode}</p>
-					</div>
-					<div class="timeline-center">
-						<div class="timeline-dot" />
-						<div class="timeline-line-bottom" />
-					</div>
-					<div class="timeline-right">
-						<p class="periode">{skole.periode}</p>
-						<h3>{skole.skole}</h3>
-						<p class="program subtle">{skole.program}</p>
-						<ul class="detaljer">
-							{skole.detaljer.map((detalj) => (
-								<li>{detalj}</li>
-							))}
-						</ul>
-					</div>
-				</div>
-			))
+				);
+			})
 		}
 	</div>
 	{
