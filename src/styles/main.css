@@ -1,7 +1,11 @@
+.subtle {
+	color: #ababab;
+}
+
 .social-icons svg {
 	color: #de6262;
 }
 
-.subtle {
-	color: #ababab;
+.social-icons svg:hover {
+	color: #e89494;
 }
