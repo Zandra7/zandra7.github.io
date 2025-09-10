@@ -39,7 +39,7 @@ const icons = {
 		stroke: false,
 		fill: 'currentColor',
 	},
-};
+} as const;
 
 const icon = icons[name as keyof typeof icons];
 
@@ -57,7 +57,40 @@ if (!icon) {
 	xmlns="http://www.w3.org/2000/svg"
 >
 	{
-		icon.stroke ? (
+		name === 'profile-square' ? (
+			<>
+				{/* Background rectangle */}
+				<rect
+					x="0"
+					y="0"
+					width="200"
+					height="200"
+					fill="#f3f4f6"
+					stroke="#d1d5db"
+					stroke-width="2"
+				/>
+
+				{/* Person icon */}
+				<g transform="translate(100, 80)" fill="#9ca3af">
+					{/* Head */}
+					<circle cx="0" cy="0" r="25" />
+					{/* Body */}
+					<path d="M-35 45 C-35 25 -20 15 0 15 C20 15 35 25 35 45 L35 60 L-35 60 Z" />
+				</g>
+
+				{/* Text */}
+				<text
+					x="100"
+					y="160"
+					text-anchor="middle"
+					fill="#6b7280"
+					font-size="12"
+					font-family="Arial, sans-serif"
+				>
+					Ikke noe bilde ennå
+				</text>
+			</>
+		) : icon.stroke ? (
 			<path
 				d={icon.path}
 				stroke="currentColor"
