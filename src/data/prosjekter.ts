@@ -8,10 +8,12 @@ export interface Prosjekt {
 
 export const prosjekter: Prosjekt[] = [
 	{
-		navn: 'Prosjekt 1',
-		beskrivelse: 'Beskrivelse av prosjekt 1.',
-		teknologier: ['JavaScript', 'Express', 'PostgreSQL'],
-		link: '/',
+		navn: 'Tic-Tac-Toe i Kotlin',
+		type: 'parprogrammering',
+		beskrivelse:
+			'Tre på rad spill laget i Kotlin som en parproggrammerinsoppgave for å bli mer kjent med kotlin og testing.',
+		teknologier: ['Kotlin', 'Gradle', 'JUnit'],
+		link: 'https://github.com/Zandra7/kotlin-Tic-Tac-Toe',
 	},
 	{
 		navn: 'Brainstorming-app',
