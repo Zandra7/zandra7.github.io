@@ -22,7 +22,11 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 	>
 		{
 			synligeProsjekter.map((prosjekt, index) => (
-				<div class="prosjekt-item">
+				<div
+					class="prosjekt-item"
+					data-link={prosjekt.link}
+					style="cursor: pointer;"
+				>
 					<h3>{prosjekt.navn}</h3>
 					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
 					<TeknologiListe teknologier={prosjekt.teknologier} />
@@ -31,7 +35,11 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 		}
 		{
 			prosjekter.slice(antallSynlige).map((prosjekt, index) => (
-				<div class="prosjekt-item skjult-prosjekt" style="display: none;">
+				<div
+					class="prosjekt-item skjult-prosjekt"
+					data-link={prosjekt.link}
+					style="display: none; cursor: pointer;"
+				>
 					<h3>{prosjekt.navn}</h3>
 					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
 					<TeknologiListe teknologier={prosjekt.teknologier} />
@@ -53,6 +61,17 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 	document.addEventListener('DOMContentLoaded', function () {
 		const prosjekterContainer = document.querySelector('.prosjekter-container');
 		if (!prosjekterContainer) return;
+
+		// Håndter klikk på prosjekter
+		prosjekterContainer.addEventListener('click', function (event) {
+			const target = event.target as HTMLElement;
+			if (!target) return;
+
+			const prosjektItem = target.closest('.prosjekt-item') as HTMLElement;
+			if (prosjektItem && prosjektItem.dataset.link) {
+				window.open(prosjektItem.dataset.link, '_blank');
+			}
+		});
 
 		const button = prosjekterContainer.querySelector('.vis-mer-knapp');
 		if (!button) return;
