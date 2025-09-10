@@ -12,7 +12,7 @@ export const prosjekter: Prosjekt[] = [
 		type: 'parprogrammering',
 		beskrivelse:
 			'Tre på rad spill laget i Kotlin som en parproggrammerinsoppgave for å bli mer kjent med kotlin og testing.',
-		teknologier: ['Kotlin', 'Gradle', 'JUnit'],
+		teknologier: ['Kotlin', 'Gradle', 'JUnit', 'Git'],
 		link: 'https://github.com/Zandra7/kotlin-Tic-Tac-Toe',
 	},
 	{
@@ -27,14 +27,17 @@ export const prosjekter: Prosjekt[] = [
 			'HTML',
 			'CSS',
 			'JavaScript',
+			'Git',
 		],
 		link: 'https://github.com/Zandra7/Brainstorming-app',
 	},
 
 	{
-		navn: 'Prosjekt 3',
-		beskrivelse: 'Beskrivelse av prosjekt 3.',
-		teknologier: ['Astro', 'TypeScript', 'CSS'],
-		link: '/',
+		navn: 'Underchurch spill',
+		type: 'skoleprosjekt',
+		beskrivelse:
+			'Et 2D-spill laget i Godot med enkel tutorial og grunnleggende mekanikker. Spillet er laget for to personer som deler ett tastatur.',
+		teknologier: ['Godot', 'Git', 'Spillutvikling'],
+		link: 'https://github.com/Zandra7/Underchurch',
 	},
 ];
