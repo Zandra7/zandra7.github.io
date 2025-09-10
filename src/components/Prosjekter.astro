@@ -27,7 +27,10 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 					data-link={prosjekt.link}
 					style="cursor: pointer;"
 				>
-					<h3>{prosjekt.navn}</h3>
+					<div class="prosjekt-header">
+						<h3>{prosjekt.navn}</h3>
+						<p class="subtle">{prosjekt.type}</p>
+					</div>
 					<p class="beskrivelse">{prosjekt.beskrivelse}</p>
 					<TeknologiListe teknologier={prosjekt.teknologier} />
 				</div>

@@ -20,6 +20,16 @@
 	max-width: 450px;
 }
 
+.prosjekt-header {
+	display: flex;
+	justify-content: space-between;
+	text-align: start;
+}
+
+.prosjekt-header p {
+	margin: 0;
+}
+
 .prosjekter-container h2 {
 	margin-bottom: 2rem;
 }

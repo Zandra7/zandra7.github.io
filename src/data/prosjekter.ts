@@ -1,5 +1,6 @@
 export interface Prosjekt {
 	navn: string;
+	type?: string;
 	beskrivelse: string;
 	teknologier: string[];
 	link: string;
@@ -14,6 +15,7 @@ export const prosjekter: Prosjekt[] = [
 	},
 	{
 		navn: 'Brainstorming-app',
+		type: 'skoleprosjekt',
 		beskrivelse:
 			'En kreativ samarbeidsplattform som lar deg og andre lage eller inngå rom der idéer deles anonymt som post-it-lapper.',
 		teknologier: [
