@@ -18,6 +18,7 @@
 	flex: 1;
 	min-width: 300px;
 	max-width: 450px;
+	transition: background-color 0.3s ease;
 }
 
 .prosjekt-header {
@@ -42,6 +43,10 @@
 .prosjekter-container .beskrivelse {
 	margin: 0;
 	line-height: 1.5;
+}
+
+.prosjekter-container .prosjekt-item:hover {
+	background-color: rgba(222, 98, 98, 0.1);
 }
 
 @media (max-width: 1100px) {
