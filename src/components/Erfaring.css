@@ -29,6 +29,10 @@
 	margin: 0.5rem 0 0.5rem 0;
 }
 
+.erfaring-container .job:hover .timeline-dot {
+	box-shadow: 0 0 10px rgba(222, 98, 98, 0.5);
+}
+
 .erfaring-container .timeline-line-bottom {
 	width: 2px;
 	background-color: #de6262;
@@ -40,6 +44,11 @@
 .erfaring-container h3,
 .erfaring-container h4 {
 	margin: 0;
+	transition: color 0.3s ease;
+}
+
+.erfaring-container .job:hover h3 {
+	color: #de6262;
 }
 
 .erfaring-container .bedrift {

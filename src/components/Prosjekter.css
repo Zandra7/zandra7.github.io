@@ -18,7 +18,14 @@
 	flex: 1;
 	min-width: 300px;
 	max-width: 450px;
-	transition: background-color 0.3s ease;
+	transition: all 0.3s ease;
+	transform: translateY(0);
+}
+
+.prosjekter-container .prosjekt-item:hover {
+	background-color: rgba(222, 98, 98, 0.15);
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .prosjekt-header {
@@ -38,6 +45,12 @@
 .prosjekter-container h3 {
 	margin: 0;
 	color: #de6262;
+	transition: all 0.3s ease;
+}
+
+.prosjekter-container .prosjekt-item:hover h3 {
+	color: #e89494;
+	transform: scale(1.05);
 }
 
 .prosjekter-container .beskrivelse {
@@ -46,7 +59,9 @@
 }
 
 .prosjekter-container .prosjekt-item:hover {
-	background-color: rgba(222, 98, 98, 0.1);
+	background-color: rgba(222, 98, 98, 0.15);
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 1100px) {

@@ -29,5 +29,14 @@ const { teknologier, className = '' } = Astro.props;
 		border-radius: 0.25rem;
 		font-size: 0.875rem;
 		border: 1px solid rgba(222, 98, 98, 0.2);
+		transition: all 0.3s ease;
+	}
+
+	.teknologi:hover {
+		background-color: rgba(222, 98, 98, 0.3);
+		color: #ffffff;
+		transform: translateY(-3px) scale(1.05);
+		box-shadow: 0 5px 15px rgba(222, 98, 98, 0.3);
+		border-color: rgba(222, 98, 98, 0.5);
 	}
 </style>

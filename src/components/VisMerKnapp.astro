@@ -35,6 +35,7 @@ const {
 		buttons.forEach((button) => {
 			button.addEventListener('click', function () {
 				const pilIkon = button.querySelector('.pil-ikon');
+
 				const visMerTekst = button.querySelector(
 					'.vis-mer-tekst'
 				) as HTMLElement;
@@ -44,7 +45,16 @@ const {
 				const targetSelector =
 					button.getAttribute('data-target-selector') || '.skjult-element';
 
-				pilIkon?.classList.toggle('rotert');
+				if (pilIkon) {
+					const currentTransform = (pilIkon as HTMLElement).style.transform;
+					const isCurrentlyRotated = currentTransform.includes('180deg');
+
+					if (isCurrentlyRotated) {
+						(pilIkon as HTMLElement).style.transform = 'rotate(0deg)';
+					} else {
+						(pilIkon as HTMLElement).style.transform = 'rotate(180deg)';
+					}
+				}
 
 				if (visMerTekst && visMindreTekst) {
 					if (visMerTekst.style.display === 'none') {
