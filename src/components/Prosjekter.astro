@@ -12,35 +12,45 @@ const { prosjekter, antallSynlige = 2 } = Astro.props;
 const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 ---
 
-<div class="prosjekter-container" data-vis-mer-container>
-	<h2>Prosjekter</h2>
-	<div
+<section
+	class="prosjekter-container"
+	data-vis-mer-container
+	aria-labelledby="prosjekter-heading"
+>
+	<h2 id="prosjekter-heading">Prosjekter</h2>
+	<ul
 		class="prosjekter-list"
 		data-alle-prosjekter={JSON.stringify(prosjekter)}
 		data-antall-synlige={antallSynlige}
+		role="list"
 	>
 		{
 			prosjekter.map((prosjekt, index) => {
 				const erSkjult = index >= antallSynlige;
 				return (
-					<a
-						class={`prosjekt-item ${erSkjult ? 'skjult-element' : ''}`}
-						href={prosjekt.link}
-						style={
-							erSkjult ? 'display: none; cursor: pointer;' : 'cursor: pointer;'
-						}
+					<li
+						class={erSkjult ? 'skjult-element' : ''}
+						style={erSkjult ? 'display: none;' : ''}
 					>
-						<div class="prosjekt-header">
-							<h3>{prosjekt.navn}</h3>
-							<p class="subtle">{prosjekt.type}</p>
-						</div>
-						<p class="beskrivelse">{prosjekt.beskrivelse}</p>
-						<TeknologiListe teknologier={prosjekt.teknologier} />
-					</a>
+						<article>
+							<a
+								class={`prosjekt-item`}
+								href={prosjekt.link}
+								style={erSkjult ? 'cursor: pointer;' : 'cursor: pointer;'}
+							>
+								<div class="prosjekt-header">
+									<h3>{prosjekt.navn}</h3>
+									<p class="subtle">{prosjekt.type}</p>
+								</div>
+								<p class="beskrivelse">{prosjekt.beskrivelse}</p>
+								<TeknologiListe teknologier={prosjekt.teknologier} />
+							</a>
+						</article>
+					</li>
 				);
 			})
 		}
-	</div>
+	</ul>
 	{
 		harSkjulteProsjekter && (
 			<VisMerKnapp
@@ -50,7 +60,7 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 			/>
 		)
 	}
-</div>
+</section>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function () {

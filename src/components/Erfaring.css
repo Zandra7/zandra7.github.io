@@ -5,6 +5,12 @@
 	margin-bottom: 3rem;
 }
 
+.erfaring-container .timeline {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
 .erfaring-container .periode {
 	text-align: right;
 	margin: 0;

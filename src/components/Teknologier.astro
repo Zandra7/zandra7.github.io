@@ -11,7 +11,7 @@ const alleTeknologier = [
 const unikeTeknologier = [...new Set(alleTeknologier)].sort();
 ---
 
-<div>
-	<h2>Teknologier</h2>
+<section aria-labelledby="teknologier-heading">
+	<h2 id="teknologier-heading">Teknologier</h2>
 	<TeknologiListe teknologier={unikeTeknologier} />
-</div>
+</section>

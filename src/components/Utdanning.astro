@@ -11,14 +11,18 @@ const { utdanning, antallSynlige = 1 } = Astro.props;
 const harSkjultUtdanning = utdanning.length > antallSynlige;
 ---
 
-<div class="utdanning-container" data-vis-mer-container>
-	<h2>Utdanning</h2>
-	<div class="timeline">
+<section
+	class="utdanning-container"
+	data-vis-mer-container
+	aria-labelledby="utdanning-heading"
+>
+	<h2 id="utdanning-heading">Utdanning</h2>
+	<ol class="timeline" role="list">
 		{
 			utdanning.map((skole, index) => {
 				const erSkjult = index >= antallSynlige;
 				return (
-					<div
+					<li
 						class={`utdanning-item ${erSkjult ? 'skjult-element' : ''}`}
 						style={erSkjult ? 'display: none;' : ''}
 					>
@@ -39,11 +43,11 @@ const harSkjultUtdanning = utdanning.length > antallSynlige;
 								))}
 							</ul>
 						</div>
-					</div>
+					</li>
 				);
 			})
 		}
-	</div>
+	</ol>
 	{
 		harSkjultUtdanning && (
 			<VisMerKnapp
@@ -53,7 +57,7 @@ const harSkjultUtdanning = utdanning.length > antallSynlige;
 			/>
 		)
 	}
-</div>
+</section>
 
 <style>
 	@import './Utdanning.css';

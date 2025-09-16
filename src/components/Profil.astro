@@ -2,7 +2,7 @@
 import Icon from './icons/Icon.astro';
 ---
 
-<div>
+<header>
 	<Icon name="profile-square" width={200} height={200} class="profile-square" />
 	<h1 class="name">Sandra Elise Eng</h1>
 	<p class="subtle title">Lærling i IT-utvikling</p>
@@ -10,24 +10,32 @@ import Icon from './icons/Icon.astro';
 	<p>
 		<Icon name="world" width={16} height={16} class="location-icon" /> Oslo, Norge
 	</p>
-	<div class="social-icons">
-		<a href="mailto:sandra.eng@live.no" title="Send meg en e-post"
-			><Icon name="mail" width={24} height={24} class="mail" /></a
-		>
-		<a
-			href="https://www.linkedin.com/in/sandra-elise-eng/"
-			target="_blank"
-			title="Besøk min LinkedIn-profil"
-			><Icon name="linkedin" width={24} height={24} class="linkedin" /></a
-		>
-		<a
-			href="https://github.com/Zandra7"
-			target="_blank"
-			title="Se mine prosjekter på GitHub"
-			><Icon name="github" width={24} height={24} class="github" /></a
-		>
-	</div>
-</div>
+	<nav class="social-icons" aria-label="Sosiale lenker">
+		<ul>
+			<li>
+				<a href="mailto:sandra.eng@live.no" title="Send meg en e-post"
+					><Icon name="mail" width={24} height={24} class="mail" /></a
+				>
+			</li>
+			<li>
+				<a
+					href="https://www.linkedin.com/in/sandra-elise-eng/"
+					target="_blank"
+					title="Besøk min LinkedIn-profil"
+					><Icon name="linkedin" width={24} height={24} class="linkedin" /></a
+				>
+			</li>
+			<li>
+				<a
+					href="https://github.com/Zandra7"
+					target="_blank"
+					title="Se mine prosjekter på GitHub"
+					><Icon name="github" width={24} height={24} class="github" /></a
+				>
+			</li>
+		</ul>
+	</nav>
+</header>
 
 <style>
 	h1 {
@@ -39,7 +47,10 @@ import Icon from './icons/Icon.astro';
 		margin-bottom: 1.5rem;
 	}
 
-	.social-icons {
+	.social-icons ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
 		display: flex;
 		justify-content: left;
 		gap: 0.75rem;

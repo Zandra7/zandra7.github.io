@@ -12,14 +12,18 @@ const { jobber, antallSynlige = 2 } = Astro.props;
 const harSkjulteJobber = jobber.length > antallSynlige;
 ---
 
-<div class="erfaring-container" data-vis-mer-container>
-	<h2>Erfaring</h2>
-	<div class="timeline">
+<section
+	class="erfaring-container"
+	data-vis-mer-container
+	aria-labelledby="erfaring-heading"
+>
+	<h2 id="erfaring-heading">Erfaring</h2>
+	<ol class="timeline" role="list">
 		{
 			jobber.map((jobb, index) => {
 				const erSkjult = index >= antallSynlige;
 				return (
-					<div
+					<li
 						class={`job ${erSkjult ? 'skjult-element' : ''}`}
 						style={erSkjult ? 'display: none;' : ''}
 					>
@@ -42,11 +46,11 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 							</ul>
 							<TeknologiListe teknologier={jobb.teknologier} />
 						</div>
-					</div>
+					</li>
 				);
 			})
 		}
-	</div>
+	</ol>
 	{
 		harSkjulteJobber && (
 			<VisMerKnapp
@@ -56,7 +60,7 @@ const harSkjulteJobber = jobber.length > antallSynlige;
 			/>
 		)
 	}
-</div>
+</section>
 
 <style>
 	@import './Erfaring.css';
