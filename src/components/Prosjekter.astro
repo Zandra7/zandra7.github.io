@@ -23,9 +23,9 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 			prosjekter.map((prosjekt, index) => {
 				const erSkjult = index >= antallSynlige;
 				return (
-					<div
+					<a
 						class={`prosjekt-item ${erSkjult ? 'skjult-element' : ''}`}
-						data-link={prosjekt.link}
+						href={prosjekt.link}
 						style={
 							erSkjult ? 'display: none; cursor: pointer;' : 'cursor: pointer;'
 						}
@@ -36,7 +36,7 @@ const harSkjulteProsjekter = prosjekter.length > antallSynlige;
 						</div>
 						<p class="beskrivelse">{prosjekt.beskrivelse}</p>
 						<TeknologiListe teknologier={prosjekt.teknologier} />
-					</div>
+					</a>
 				);
 			})
 		}
