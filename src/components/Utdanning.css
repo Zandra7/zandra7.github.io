@@ -44,11 +44,13 @@
 	background-color: #de6262;
 	border-radius: 50%;
 	margin: 0.5rem 0 0.5rem 0;
-	transition: box-shadow 0.3s ease;
+	transition: box-shadow 0.35s ease, transform 0.35s ease;
 }
 
 .utdanning-container .utdanning-item:hover .timeline-dot {
-	box-shadow: 0 0 10px rgba(222, 98, 98, 0.5);
+	box-shadow: 0 0 10px rgba(222, 98, 98, 0.9), 0 0 20px rgba(222, 98, 98, 0.65),
+		0 0 30px rgba(222, 98, 98, 0.4);
+	transform: scale(1.18);
 }
 
 .utdanning-container .timeline-line-bottom {
