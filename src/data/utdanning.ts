@@ -7,7 +7,7 @@ export interface Utdanning {
 
 export const utdanning: Utdanning[] = [
 	{
-		periode: 'sep. 2020 - mar. 2021',
+		periode: 'sep. 2022 - mar. 2024',
 		skole: 'Fyrstikkalleen videregående skole',
 		program: 'Informasjonsteknologi og medieproduksjon',
 		detaljer: ['Poengsum: 54', 'Fravær: 3 timer'],
