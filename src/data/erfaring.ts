@@ -10,7 +10,7 @@ export const jobber: Jobb[] = [
 	{
 		periode: 'aug. 2024 - Nå',
 		tittel: 'Lærling i IT-utvikling',
-		bedrift: 'Nav IT, Oslo',
+		bedrift: 'Nav IT',
 		beskrivelse: [
 			'Utvikler og vedlikeholder applikasjoner brukt av Nav',
 			'Jobber med moderne React-løsninger og TypeScript',
