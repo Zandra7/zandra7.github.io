@@ -8,6 +8,7 @@ import { jobber } from '../data/erfaring';
 import { utdanning } from '../data/utdanning';
 import { prosjekter } from '../data/prosjekter';
 import Teknologier from '../components/Teknologier.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 const ANTALL_SYNLIGE_JOBBER = 3;
 const ANTALL_SYNLIGE_PROSJEKTER = 3;
@@ -15,6 +16,7 @@ const ANTALL_SYNLIG_UTDANNING = 1;
 ---
 
 <Layout>
+	<ThemeToggle />
 	<div class="container">
 		<aside class="sidebar">
 			<Sidebar />

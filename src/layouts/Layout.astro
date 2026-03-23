@@ -8,26 +8,63 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Sandra Eng</title>
+		<script is:inline>
+			(function () {
+				const saved = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia(
+					'(prefers-color-scheme: dark)',
+				).matches;
+				if (saved === 'dark' || (!saved && prefersDark)) {
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	:root {
+		--bg-color: #f8f4f4;
+		--text-color: #2d2020;
+		--subtle-color: #6b6060;
+		--card-hover-shadow: rgba(0, 0, 0, 0.08);
+		--teknologi-hover-text: #2d2020;
+	}
+
+	html.dark {
+		--bg-color: #252020;
+		--text-color: #ffffff;
+		--subtle-color: #ababab;
+		--card-hover-shadow: rgba(0, 0, 0, 0.2);
+		--teknologi-hover-text: #ffffff;
+	}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-			sans-serif;
-		background-color: #252020;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'%3E%3Ccircle cx='100' cy='150' r='3' fill='%23de6262' opacity='0.15'/%3E%3Ccircle cx='450' cy='300' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='200' cy='500' r='2.5' fill='%23de6262' opacity='0.12'/%3E%3Ccircle cx='380' cy='650' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Cpath d='M150 100 L170 110 L150 120 Z' fill='%23de6262' opacity='0.08'/%3E%3Cpath d='M400 450 L420 460 L400 470 Z' fill='%23ffffff' opacity='0.06'/%3E%3Cpath d='M80 600 L100 610 L80 620 Z' fill='%23de6262' opacity='0.08'/%3E%3C/svg%3E");
+		font-family:
+			'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		background-color: var(--bg-color);
 		background-repeat: repeat;
 		background-size: 600px 800px;
 		background-attachment: fixed;
-		color: #ffffff;
+		color: var(--text-color);
+		transition:
+			background-color 0.3s ease,
+			color 0.3s ease;
+	}
+
+	html {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'%3E%3Ccircle cx='100' cy='150' r='3' fill='%23de6262' opacity='0.08'/%3E%3Ccircle cx='450' cy='300' r='2' fill='%23ccbbbb' opacity='0.12'/%3E%3Ccircle cx='200' cy='500' r='2.5' fill='%23de6262' opacity='0.07'/%3E%3Ccircle cx='380' cy='650' r='2' fill='%23ccbbbb' opacity='0.1'/%3E%3Cpath d='M150 100 L170 110 L150 120 Z' fill='%23de6262' opacity='0.05'/%3E%3Cpath d='M400 450 L420 460 L400 470 Z' fill='%23ccbbbb' opacity='0.06'/%3E%3Cpath d='M80 600 L100 610 L80 620 Z' fill='%23de6262' opacity='0.05'/%3E%3C/svg%3E");
+	}
+
+	html.dark {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'%3E%3Ccircle cx='100' cy='150' r='3' fill='%23de6262' opacity='0.15'/%3E%3Ccircle cx='450' cy='300' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='200' cy='500' r='2.5' fill='%23de6262' opacity='0.12'/%3E%3Ccircle cx='380' cy='650' r='2' fill='%23ffffff' opacity='0.1'/%3E%3Cpath d='M150 100 L170 110 L150 120 Z' fill='%23de6262' opacity='0.08'/%3E%3Cpath d='M400 450 L420 460 L400 470 Z' fill='%23ffffff' opacity='0.06'/%3E%3Cpath d='M80 600 L100 610 L80 620 Z' fill='%23de6262' opacity='0.08'/%3E%3C/svg%3E");
 	}
 
 	/* Scrollbar styling */

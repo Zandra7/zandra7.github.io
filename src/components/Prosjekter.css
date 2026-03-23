@@ -23,14 +23,14 @@
 	max-width: 450px;
 	transition: all 0.3s ease;
 	transform: translateY(0);
-	color: white;
+	color: var(--text-color);
 	text-decoration: none;
 }
 
 .prosjekter-container .prosjekt-item:hover {
 	background-color: rgba(222, 98, 98, 0.15);
 	transform: translateY(-5px);
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 10px 25px var(--card-hover-shadow);
 }
 
 .prosjekt-header {
@@ -66,7 +66,7 @@
 .prosjekter-container .prosjekt-item:hover {
 	background-color: rgba(222, 98, 98, 0.15);
 	transform: translateY(-5px);
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 10px 25px var(--card-hover-shadow);
 }
 
 @media (max-width: 1100px) {

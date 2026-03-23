@@ -1,0 +1,68 @@
+---
+import Icon from './icons/Icon.astro';
+---
+
+<button
+	class="theme-toggle"
+	aria-label="Bytt tema"
+	title="Bytt mellom lys og mørk modus"
+>
+	<span class="icon-sun"><Icon name="sun" width={20} height={20} /></span>
+	<span class="icon-moon"><Icon name="moon" width={20} height={20} /></span>
+</button>
+
+<style is:global>
+	.theme-toggle {
+		position: fixed;
+		top: 1.5rem;
+		right: 1.5rem;
+		z-index: 100;
+		background: none;
+		border: 1px solid rgba(222, 98, 98, 0.3);
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: #de6262;
+		transition: all 0.3s ease;
+	}
+
+	.theme-toggle:hover {
+		background-color: rgba(222, 98, 98, 0.1);
+		border-color: #de6262;
+		transform: rotate(20deg);
+	}
+
+	.theme-toggle .icon-sun {
+		display: flex;
+	}
+
+	.theme-toggle .icon-moon {
+		display: none;
+	}
+
+	html.dark .theme-toggle .icon-sun {
+		display: none;
+	}
+
+	html.dark .theme-toggle .icon-moon {
+		display: flex;
+	}
+</style>
+
+<script>
+	document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+		const isDark = document.documentElement.classList.toggle('dark');
+		localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		console.log('Theme toggled. isDark:', isDark);
+		console.log('html classes:', document.documentElement.className);
+		console.log(
+			'--bg-color:',
+			getComputedStyle(document.documentElement).getPropertyValue('--bg-color'),
+		);
+		console.log('body bg:', getComputedStyle(document.body).backgroundColor);
+	});
+</script>
