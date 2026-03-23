@@ -57,12 +57,5 @@ import Icon from './icons/Icon.astro';
 	document.querySelector('.theme-toggle')?.addEventListener('click', () => {
 		const isDark = document.documentElement.classList.toggle('dark');
 		localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		console.log('Theme toggled. isDark:', isDark);
-		console.log('html classes:', document.documentElement.className);
-		console.log(
-			'--bg-color:',
-			getComputedStyle(document.documentElement).getPropertyValue('--bg-color'),
-		);
-		console.log('body bg:', getComputedStyle(document.body).backgroundColor);
 	});
 </script>
